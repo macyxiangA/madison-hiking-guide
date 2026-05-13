@@ -47,6 +47,168 @@ body {
   color: #ffc107 !important;
 }
 
+.about-page {
+  color: #1f332a;
+}
+
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  padding: 3.25rem;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(16, 94, 71, 0.94), rgba(42, 132, 74, 0.9)),
+    url("./assets/lakeshoretrail.jpg") center/cover;
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(17, 64, 47, 0.18);
+}
+
+.about-hero > div {
+  max-width: 760px;
+}
+
+.about-kicker {
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.about-hero h1 {
+  max-width: 850px;
+  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 5vw, 4.6rem);
+  line-height: 1.02;
+}
+
+.about-hero p {
+  max-width: 690px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.15rem;
+}
+
+.about-card {
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(25, 58, 43, 0.09);
+}
+
+.about-card .card-body {
+  padding: 1.5rem;
+}
+
+.about-card h2 {
+  margin-bottom: 0.75rem;
+  color: #1c3c2d;
+  font-size: 1.35rem;
+}
+
+.about-card p {
+  margin-bottom: 0;
+  color: #5b6b62;
+}
+
+.about-feature-card .card-body {
+  padding: 2rem;
+}
+
+.section-label {
+  margin-bottom: 0.4rem !important;
+  color: #198754 !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.about-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.about-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.95rem;
+  border: 1px solid #dfeae2;
+  border-radius: 8px;
+  background: #f8fbf8;
+  color: #33463c;
+  font-size: 0.95rem;
+}
+
+.about-check {
+  display: inline-flex;
+  flex: 0 0 1.35rem;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: #198754;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.about-side-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbf8 100%);
+}
+
+.about-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.about-tech-list .badge {
+  border: 1px solid #dce8df;
+  padding: 0.55rem 0.75rem;
+  font-weight: 600;
+}
+
+.about-closing {
+  margin-top: 1.5rem;
+  padding: 2rem;
+  border: 1px solid #dbe8de;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.about-closing h2 {
+  margin-bottom: 0.75rem;
+  color: #1c3c2d;
+  font-size: 1.65rem;
+}
+
+.about-closing p {
+  margin-bottom: 0;
+  color: #5b6b62;
+}
+
+.about-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #eaf5ed;
+  color: #244334;
+}
+
+.about-stat strong {
+  color: #198754;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.about-stat span {
+  font-weight: 600;
+}
+
 @media (max-width: 1024px) {
   .main-content .container {
     padding: 0 1.5rem !important;
@@ -60,5 +222,23 @@ body {
   
   .main-content {
     padding: 1rem 0;
+  }
+
+  .about-hero,
+  .about-feature-card .card-body,
+  .about-closing {
+    padding: 1.5rem;
+  }
+
+  .about-hero p {
+    font-size: 1rem;
+  }
+
+  .about-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stat {
+    align-items: flex-start;
   }
 }

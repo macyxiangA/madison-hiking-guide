@@ -27,7 +27,7 @@ function Account() {
 
   const handleAccountReset = () => {
     const confirmation = confirm(
-      "WARNING: Resetting your account will reset your username and remove all liked trails. Continue?"
+      "WARNING: Resetting your account will reset your username and remove all saved trails. Continue?"
     );
 
     if (confirmation) {
@@ -56,13 +56,13 @@ function Account() {
                 <p className="text-muted small mb-3">
                   You haven't told us your name yet!
                   <br />
-                  Set a username below so we can save your favorite trails just for you.
+                  Set a username below so you can save trails in this browser.
                 </p>
               ) : (
                 <p className="text-muted small mb-3">
                   You're signed in as <strong>{username}</strong>!
                   <br />
-                  Feel free to start liking trails — we'll keep your favorites safe and cozy here.
+                  You can save trails and manage your local trail list from here.
                 </p>
               )}
 
@@ -84,7 +84,7 @@ function Account() {
 
               <h2 className="h5 mb-2">Danger zone</h2>
               <p className="text-muted small mb-3">
-                Resetting your account will clear your username and remove all liked trails.
+                Resetting your account will clear your username and remove all saved trails.
                 This is similar to logging out and starting fresh.
               </p>
               <Button

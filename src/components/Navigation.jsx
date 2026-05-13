@@ -12,8 +12,9 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
-            <Nav.Link as={Link} to="/likedtrails">Liked Trails</Nav.Link>
+            <Nav.Link as={Link} to="/trails">Explore</Nav.Link>
+            <Nav.Link as={Link} to="/likedtrails">Saved</Nav.Link>
+            <Nav.Link as={Link} to="/my-trails">My Trails</Nav.Link>
             <Nav.Link as={Link} to="/account">Account</Nav.Link>
           </Nav>
         </Navbar.Collapse>

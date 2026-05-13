@@ -15,7 +15,7 @@ function StatsPanel({ trails, likedIds }) {
           <ListGroup.Item>Easy: {easy}</ListGroup.Item>
           <ListGroup.Item>Medium: {medium}</ListGroup.Item>
           <ListGroup.Item>Hard: {hard}</ListGroup.Item>
-          <ListGroup.Item>Liked by you: {likedIds.length}</ListGroup.Item>
+          <ListGroup.Item>Saved by you: {likedIds.length}</ListGroup.Item>
         </ListGroup>
       </Card.Body>
     </Card>

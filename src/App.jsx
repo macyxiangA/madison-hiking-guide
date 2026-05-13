@@ -8,6 +8,7 @@ import About from './components/About'
 import Account from './components/Account'
 import LikedTrailList from './components/LikedTrailList'
 import LikedTrailDetail from './components/LikedTrailDetail'
+import MyTrails from './components/MyTrails'
 import Footer from './components/Footer'
 import { ensureUserInfo } from './utils/userInfo'
 import picnicPointImg from './assets/picnicpoint.jpg'
@@ -160,11 +161,12 @@ function App() {
           
           <div className="container">
             <Routes>
-              <Route path="/" element={<TrailList trails={trails} />} />
+              <Route path="/" element={<About />} />
+              <Route path="/trails" element={<TrailList trails={trails} />} />
               <Route path="/trail/:id" element={<TrailDetail trails={trails} />} />
               <Route path="/likedtrail/:id" element={<LikedTrailDetail trails={trails} />} />
-              <Route path="/about" element={<About />} />
               <Route path="/likedtrails" element={<LikedTrailList trails={trails} />} />
+              <Route path="/my-trails" element={<MyTrails />} />
               <Route path="/account" element={<Account />} />
             </Routes>
           </div>

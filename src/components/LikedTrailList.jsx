@@ -35,8 +35,8 @@ function LikedTrailList({ trails }) {
 
   const pageTitle =
     displayName === "Your"
-      ? "Your Liked Trails"
-      : `${displayName}'s Liked Trails`;
+      ? "Your Saved Trails"
+      : `${displayName}'s Saved Trails`;
 
   return (
     <PageWrapper>
@@ -45,18 +45,23 @@ function LikedTrailList({ trails }) {
       {likedTrails.length === 0 ? (
         <Row className="align-items-start">
           <Col md={8} className="mb-4">
-            <Card className="text-center shadow-sm">
+            <Card className="saved-empty-card text-center">
               <Card.Body>
                 <Card.Title className="mb-2">
-                  No liked trails yet
+                  No saved trails yet
                 </Card.Title>
                 <Card.Text className="text-muted mb-3">
-                  Start exploring hikes on the Home page and <br />
-                  tap the heart button on a trail to save it here.
+                  Explore trails and save the ones you may want to revisit.
+                  Your saved list stays in this browser.
                 </Card.Text>
-                <Button as={Link} to="/" variant="success">
-                  Browse trails
-                </Button>
+                <div className="d-flex flex-wrap justify-content-center gap-2">
+                  <Button as={Link} to="/trails" variant="success">
+                    Explore Trails
+                  </Button>
+                  <Button as={Link} to="/my-trails" variant="outline-success">
+                    Create a Trail Note
+                  </Button>
+                </div>
               </Card.Body>
             </Card>
           </Col>

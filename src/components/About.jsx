@@ -1,4 +1,5 @@
-import { Row, Col, Card, Badge } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { Row, Col, Card, Badge, Button } from 'react-bootstrap'
 import PageWrapper from "./PageWrapper";
 
 function About() {
@@ -13,7 +14,11 @@ function About() {
     },
     {
       title: "Save your short list",
-      text: "Like trails you want to revisit later and keep a personal list on this device for easy trip planning."
+      text: "Save trails you want to revisit later and keep a personal list on this device for easy trip planning."
+    },
+    {
+      title: "Create your own notes",
+      text: "Add custom trail ideas with location, difficulty, distance, and planning notes saved only in your browser."
     }
   ];
 
@@ -44,18 +49,23 @@ function About() {
               Madison trail planning
             </Badge>
             <h1>Find a better walk, hike, or weekend reset around Madison.</h1>
-            <p>
-              Madison Hiking Guide is a simple planning companion for exploring
-              local parks, lakeside paths, conservancies, gardens, and wooded
-              routes. It brings the key details into one readable place so you
-              can choose a trail with confidence before heading out.
-            </p>
+            <div className="about-hero-copy">
+              <p>
+                Madison Hiking Guide is a simple planning companion for exploring
+                local parks, lakeside paths, conservancies, gardens, and wooded
+                routes. It brings the key details into one readable place so you
+                can choose a trail with confidence before heading out.
+              </p>
+              <Button as={Link} to="/trails" variant="light" size="lg">
+                Explore Trails
+              </Button>
+            </div>
           </div>
         </section>
 
         <Row className="g-4 mb-4">
           {appHighlights.map((item) => (
-            <Col md={4} key={item.title}>
+            <Col md={6} lg={3} key={item.title}>
               <Card className="about-card h-100">
                 <Card.Body>
                   <h2>{item.title}</h2>
@@ -97,10 +107,11 @@ function About() {
                 <p className="section-label">Privacy and local data</p>
                 <h2>Your trail list stays in your browser.</h2>
                 <p>
-                  Liked trails and the username you set on the Account page are
-                  saved with localStorage in your own browser. The app uses that
-                  local data to remember your preferences on this device and does
-                  not require an account or remote sign-in.
+                  Saved trails, custom trail notes, and the username you set on
+                  the Account page are stored with localStorage in your own
+                  browser. The app uses that local data to remember your
+                  preferences on this device and does not require an account or
+                  remote sign-in.
                 </p>
               </Card.Body>
             </Card>
@@ -124,11 +135,11 @@ function About() {
         <section className="about-closing">
           <Row className="g-4 align-items-center">
             <Col lg={8}>
-              <h2>Designed for practical, low-friction trail discovery.</h2>
+              <h2>Ready to pick a trail?</h2>
               <p>
-                Whether you want an easy lakeside walk, a longer route through
-                prairie and forest, or a park with better amenities, the guide is
-                organized to make the next choice faster.
+                Go to Explore to filter the trail list, open a specific route,
+                save the places you want to visit next, or create a private
+                trail note for your own ideas.
               </p>
             </Col>
             <Col lg={4}>
@@ -136,6 +147,22 @@ function About() {
                 <strong>8</strong>
                 <span>Madison-area destinations currently included</span>
               </div>
+              <Button
+                as={Link}
+                to="/trails"
+                variant="success"
+                className="about-closing-cta w-100"
+              >
+                Explore Trails
+              </Button>
+              <Button
+                as={Link}
+                to="/my-trails"
+                variant="outline-success"
+                className="about-closing-cta w-100"
+              >
+                Create a Trail Note
+              </Button>
             </Col>
           </Row>
         </section>

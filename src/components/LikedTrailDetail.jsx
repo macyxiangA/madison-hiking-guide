@@ -21,7 +21,7 @@ function LikedTrailDetail({ trails }) {
     const newUserInfo = ensureUserInfo();
 
     if (newUserInfo.username === "Anonymous") {
-      alert("To like trails, please set a username in the Account page first.");
+      alert("To save trails, please set a username in the Account page first.");
       return;
     }
 
@@ -40,7 +40,7 @@ function LikedTrailDetail({ trails }) {
       <PageWrapper>
         <Alert variant="danger">Trail not found</Alert>
         <Link to="/likedtrails" className="btn btn-primary mt-3">
-          Back to Liked Trails
+          Back to Saved Trails
         </Link>
       </PageWrapper>
     );
@@ -50,7 +50,7 @@ function LikedTrailDetail({ trails }) {
     <PageWrapper>
       <Link to="/likedtrails" className="btn btn-outline-secondary mb-3">
         <FaArrowLeft className="me-2" />
-        Back to Liked Trails
+        Back to Saved Trails
       </Link>
 
       <Row>
@@ -101,7 +101,7 @@ function LikedTrailDetail({ trails }) {
           <Card>
             <Card.Body className="d-grid">
               <Button onClick={handleLike}>
-                ❤️ {isLiked ? "Unlike" : "Like"} this trail
+                {isLiked ? "Remove from Saved Trails" : "Save this trail"}
               </Button>
             </Card.Body>
           </Card>

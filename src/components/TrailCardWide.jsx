@@ -51,7 +51,7 @@ function TrailCardWide({ trail, onUnlike }) {
               className="btn btn-outline-danger btn-sm w-100"
               onClick={onUnlike}
             >
-              Unlike
+              Remove
             </button>
           )}
         </Col>

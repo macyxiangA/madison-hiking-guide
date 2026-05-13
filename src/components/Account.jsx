@@ -1,20 +1,14 @@
 import { Row, Col, Card, Form, Button } from 'react-bootstrap'
 import { useState, useEffect, useRef } from 'react'
 import PageWrapper from "./PageWrapper";
+import { ensureUserInfo, saveUserInfo } from '../utils/userInfo';
 
 function Account() {
   const [username, setUsername] = useState("");
   const newUsernameRef = useRef(null);
 
   useEffect(() => {
-    fetch('https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo', {
-      method: "GET",
-      headers: {
-        "X-CS571-ID": CS571.getBadgerId(),
-      }
-    }).then(res => res.json()).then(json => {
-      setUsername(Object.values(json.results)[0].username);
-    })
+    setUsername(ensureUserInfo().username);
   }, []);
 
   const handleUsernameChange = (e) => {
@@ -23,25 +17,11 @@ function Account() {
       alert("Your username must have at least one character!");
       return;
     }
-    fetch('https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo', {
-      method: "GET",
-      headers: {
-        "X-CS571-ID": CS571.getBadgerId(),
-        "Content-Type": "application/json",
-      }
-    }).then(res => res.json()).then(json => {
-      const newUserInfo = Object.values(json.results)[0];
-      newUserInfo.username = newUsernameRef.current.value.trim();
-      fetch(`https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo?id=${Object.keys(json.results)[0]}`, {
-        method: "PUT",
-        headers: {
-          "X-CS571-ID": CS571.getBadgerId(),
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUserInfo)
-      })
-    });
-    setUsername(newUsernameRef.current.value.trim());
+    const newUsername = newUsernameRef.current.value.trim();
+    const newUserInfo = ensureUserInfo();
+    newUserInfo.username = newUsername;
+    saveUserInfo(newUserInfo);
+    setUsername(newUsername);
     newUsernameRef.current.value = "";
   };
 
@@ -51,24 +31,9 @@ function Account() {
     );
 
     if (confirmation) {
-      fetch('https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo', {
-        method: "GET",
-        headers: {
-          "X-CS571-ID": CS571.getBadgerId(),
-          "Content-Type": "application/json",
-        }
-      }).then(res => res.json()).then(json => {
-        fetch(`https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo?id=${Object.keys(json.results)[0]}`, {
-          method: "PUT",
-          headers: {
-            "X-CS571-ID": CS571.getBadgerId(),
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: "Anonymous",
-            likedTrails: []
-          })
-        })
+      saveUserInfo({
+        username: "Anonymous",
+        likedTrails: []
       });
       setUsername("Anonymous");
     }

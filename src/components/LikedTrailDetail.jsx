@@ -3,7 +3,9 @@ import { Row, Col, Card, Badge, Alert, Button } from 'react-bootstrap'
 import { FaArrowLeft } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import TrailFeatureChips from './TrailFeatureChips'
+import TrailVisitInfo from './TrailVisitInfo'
 import PageWrapper from "./PageWrapper";
+import { ensureUserInfo, saveUserInfo } from '../utils/userInfo';
 
 function LikedTrailDetail({ trails }) {
   const { id } = useParams();
@@ -11,51 +13,26 @@ function LikedTrailDetail({ trails }) {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    fetch('https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo', {
-      method: "GET",
-      headers: {
-        "X-CS571-ID": CS571.getBadgerId(),
-      }
-    }).then(res => res.json()).then(json => {
-      setIsLiked(Object.values(json.results)[0].likedTrails.includes(id));
-    });
+    setIsLiked(ensureUserInfo().likedTrails.includes(id));
   }, [id]);
 
   const handleLike = (e) => {
     e.preventDefault();
-    fetch('https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo', {
-      method: "GET",
-      headers: {
-        "X-CS571-ID": CS571.getBadgerId(),
-        "Content-Type": "application/json",
-      }
-    }).then(res => res.json()).then(json => {
-      const newUserInfo = Object.values(json.results)[0];
+    const newUserInfo = ensureUserInfo();
 
-      // 还在 Anonymous → 不允许 like，提示后直接返回
-      if (newUserInfo.username === "Anonymous") {
-        alert("To like trails, please set a username in the Account page first.");
-        return;
-      }
+    if (newUserInfo.username === "Anonymous") {
+      alert("To like trails, please set a username in the Account page first.");
+      return;
+    }
 
-      if (isLiked) {
-        newUserInfo.likedTrails = newUserInfo.likedTrails.filter(i => i !== id);
-      } else {
-        newUserInfo.likedTrails.push(id);
-      }
+    if (isLiked) {
+      newUserInfo.likedTrails = newUserInfo.likedTrails.filter(i => i !== id);
+    } else {
+      newUserInfo.likedTrails.push(id);
+    }
 
-      fetch(`https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo?id=${Object.keys(json.results)[0]}`, {
-        method: "PUT",
-        headers: {
-          "X-CS571-ID": CS571.getBadgerId(),
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUserInfo)
-      });
-
-      // 只有真正成功更新时才本地切换状态
-      setIsLiked(old => !old);
-    });
+    saveUserInfo(newUserInfo);
+    setIsLiked(old => !old);
   };
 
   if (!trail) {
@@ -128,6 +105,7 @@ function LikedTrailDetail({ trails }) {
               </Button>
             </Card.Body>
           </Card>
+          <TrailVisitInfo trail={trail} />
         </Col>
       </Row>
     </PageWrapper>

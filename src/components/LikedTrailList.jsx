@@ -4,24 +4,16 @@ import { Link } from "react-router-dom";
 import TrailCardWide from "./TrailCardWide";
 import StatsPanel from "./StatsPanel";
 import PageWrapper from "./PageWrapper";
+import { ensureUserInfo, saveUserInfo } from "../utils/userInfo";
 
 function LikedTrailList({ trails }) {
   const [username, setUsername] = useState("");
   const [likedTrailIds, setLikedTrailIds] = useState([]);
 
   useEffect(() => {
-    fetch("https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo", {
-      method: "GET",
-      headers: {
-        "X-CS571-ID": CS571.getBadgerId(),
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const userInfo = Object.values(json.results)[0];
-        setUsername(userInfo.username);
-        setLikedTrailIds(userInfo.likedTrails);
-      });
+    const userInfo = ensureUserInfo();
+    setUsername(userInfo.username);
+    setLikedTrailIds(userInfo.likedTrails);
   }, []);
 
   const likedTrails = trails.filter((trail) =>
@@ -29,38 +21,13 @@ function LikedTrailList({ trails }) {
   );
 
   const handleUnlike = (trailId) => {
-    fetch("https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo", {
-      method: "GET",
-      headers: {
-        "X-CS571-ID": CS571.getBadgerId(),
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const newUserInfo = Object.values(json.results)[0];
+    const newUserInfo = ensureUserInfo();
+    newUserInfo.likedTrails = newUserInfo.likedTrails.filter(
+      (id) => id !== trailId
+    );
 
-        newUserInfo.likedTrails = newUserInfo.likedTrails.filter(
-          (id) => id !== trailId
-        );
-
-        return fetch(
-          `https://cs571api.cs.wisc.edu/rest/f25/bucket/userinfo?id=${Object.keys(
-            json.results
-          )[0]}`,
-          {
-            method: "PUT",
-            headers: {
-              "X-CS571-ID": CS571.getBadgerId(),
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newUserInfo),
-          }
-        );
-      })
-      .then(() => {
-        setLikedTrailIds((old) => old.filter((id) => id !== trailId));
-      });
+    saveUserInfo(newUserInfo);
+    setLikedTrailIds((old) => old.filter((id) => id !== trailId));
   };
 
   const displayName =

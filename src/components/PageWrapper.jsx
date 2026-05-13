@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 function PageWrapper({ children }) {
   return (
     <Container className="py-4">
-      <div style={{ maxWidth: "900px", margin: "0 auto", width: "80vw" }}>
+      <div style={{ margin: "0 auto", width: "100%" }}>
         {children}
       </div>
     </Container>

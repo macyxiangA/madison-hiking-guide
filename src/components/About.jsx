@@ -28,8 +28,7 @@ function About() {
 
               <h2 className="mt-4">Team</h2>
               <p>
-                This project was created by Macy Xiang, Ben Vanorny, and Ryan Li 
-                as part of the CS571 Web Development course at UW-Madison.
+                This project was created by Macy Xiang, Ben Vanorny, and Ryan Li.
               </p>
 
               <h2 className="mt-4">Technologies Used</h2>

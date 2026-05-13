@@ -160,12 +160,12 @@ function App() {
           
           <div className="container">
             <Routes>
-              <Route path="/p42/" element={<TrailList trails={trails} />} />
-              <Route path="/p42/trail/:id" element={<TrailDetail trails={trails} />} />
-              <Route path="/p42/likedtrail/:id" element={<LikedTrailDetail trails={trails} />} />
-              <Route path="/p42/about" element={<About />} />
-              <Route path="/p42/likedtrails" element={<LikedTrailList trails={trails} />} />
-              <Route path="/p42/account" element={<Account />} />
+              <Route path="/" element={<TrailList trails={trails} />} />
+              <Route path="/trail/:id" element={<TrailDetail trails={trails} />} />
+              <Route path="/likedtrail/:id" element={<LikedTrailDetail trails={trails} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/likedtrails" element={<LikedTrailList trails={trails} />} />
+              <Route path="/account" element={<Account />} />
             </Routes>
           </div>
          

@@ -54,7 +54,7 @@ function LikedTrailList({ trails }) {
                   Start exploring hikes on the Home page and <br />
                   tap the heart button on a trail to save it here.
                 </Card.Text>
-                <Button as={Link} to="/p42/" variant="success">
+                <Button as={Link} to="/" variant="success">
                   Browse trails
                 </Button>
               </Card.Body>

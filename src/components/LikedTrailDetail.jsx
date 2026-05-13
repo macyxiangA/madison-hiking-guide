@@ -39,7 +39,7 @@ function LikedTrailDetail({ trails }) {
     return (
       <PageWrapper>
         <Alert variant="danger">Trail not found</Alert>
-        <Link to="/p42/likedtrails" className="btn btn-primary mt-3">
+        <Link to="/likedtrails" className="btn btn-primary mt-3">
           Back to Liked Trails
         </Link>
       </PageWrapper>
@@ -48,7 +48,7 @@ function LikedTrailDetail({ trails }) {
 
   return (
     <PageWrapper>
-      <Link to="/p42/likedtrails" className="btn btn-outline-secondary mb-3">
+      <Link to="/likedtrails" className="btn btn-outline-secondary mb-3">
         <FaArrowLeft className="me-2" />
         Back to Liked Trails
       </Link>

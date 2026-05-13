@@ -39,7 +39,7 @@ function TrailCardWide({ trail, onUnlike }) {
           className="p-3 d-flex flex-column justify-content-center"
         >
           <Link
-            to={`/p42/likedtrail/${trail.id}`}
+            to={`/likedtrail/${trail.id}`}
             className="btn btn-success btn-sm w-100 mb-2"
           >
             View Details

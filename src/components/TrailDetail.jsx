@@ -40,14 +40,14 @@ function TrailDetail({ trails }) {
     return (
       <PageWrapper>
         <Alert variant="danger">Trail not found</Alert>
-        <Link to="/p42/" className="btn btn-primary">Back to Home</Link>
+        <Link to="/" className="btn btn-primary">Back to Home</Link>
       </PageWrapper>
     )
   }
 
   return (
     <PageWrapper>
-      <Link to="/p42/" className="btn btn-outline-secondary mb-3">
+      <Link to="/" className="btn btn-outline-secondary mb-3">
         <FaArrowLeft className="me-2" />
         Back to All Trails
       </Link>

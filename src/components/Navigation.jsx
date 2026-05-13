@@ -5,16 +5,16 @@ function Navigation() {
   return (
     <Navbar bg="success" variant="dark" expand="lg" className="mb-4">
       <Container>
-        <Navbar.Brand as={Link} to="/p42/">
+        <Navbar.Brand as={Link} to="/">
           🥾 Madison Hiking Guide
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/p42/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/p42/about">About</Nav.Link>
-            <Nav.Link as={Link} to="/p42/likedtrails">Liked Trails</Nav.Link>
-            <Nav.Link as={Link} to="/p42/account">Account</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/about">About</Nav.Link>
+            <Nav.Link as={Link} to="/likedtrails">Liked Trails</Nav.Link>
+            <Nav.Link as={Link} to="/account">Account</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
